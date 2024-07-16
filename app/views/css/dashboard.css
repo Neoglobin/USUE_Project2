@@ -1,0 +1,134 @@
+
+body {
+    padding: 0px;
+    margin: 0px;
+    height: 100%;
+}
+
+.leftPanel {
+    position: absolute;
+    width: 424.97px;
+    height: 100%;
+    background-color: #2E2939;
+    background-size:contain;
+}
+
+.profile {
+    margin: 0px;
+    padding: 16px;
+}
+
+.clock {
+    font-family: "Noto Sans", sans-serif;
+    color: #E8ECF2;
+    font-size: 24px;
+    margin: 0;
+    float: left;
+}
+
+.panelIcon {
+    width: 40px;
+    height: 40px;
+    margin: 0;
+    float: right;
+}
+
+.userIcon {
+   width: 120px;
+   height: 120px;
+   padding-left: 80px;
+}
+
+.profileContent {
+    margin-top: 25px;
+    align-items: center;
+}
+
+.profileContent p {
+    font-family: "Noto Sans", sans-serif;
+    color: #E8ECF2;
+    font-size: 20px;
+    font-weight: 400;
+    text-align: center;
+}
+
+.profileContent h3 {
+    font-family: "Noto Sans", sans-serif;
+    color: #E8ECF2;
+    font-size: 24px;
+    font-weight: 500;
+    text-align: center;
+
+}
+
+  /* ------------------------------------------ */
+
+.notifyArea {
+    padding: 28px;
+    padding: 28px;
+}
+
+.notifyBlock {
+    margin-bottom: 25px;
+    background-color: #34C759;
+    opacity: 90%;
+    border-radius: 15px;
+}
+
+.notifyUpperString {
+    display: flex;
+    gap: 55px;
+    padding-left: 12px;
+}
+
+.notifyLowerString {
+    display: flex;
+    gap: 55px;
+    padding-left: 12px;
+
+}
+
+.notifyArea h3 {
+    margin: 0;
+    font-family: "Noto Serif", sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    color: #E8ECF2;
+}
+
+.notifyArea p {
+    margin: 0;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-family: "Noto Serif", sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    color: #E8ECF2;
+}
+
+.notifyArea img {
+    width: 24px;
+    height: 24px;
+    padding: 8px;
+
+}
+
+/* ----------------------------------------------------- */
+
+.buttonPanel {
+    margin-top: 40px;
+}
+
+.logoutImage {
+    width: 60px;
+    height: 60px;
+    padding: 25px;
+    float: left;
+}
+
+.addImage {
+    width: 60px;
+    height: 60px;
+    padding: 25px;
+    float: right;
+}
