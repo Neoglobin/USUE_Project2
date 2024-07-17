@@ -24,7 +24,9 @@
                 <p class="clock">13:45</p>
                 <img class="panelIcon" src="../views/img/warning_icon.png" alt="error">
                 <div class="profileContent">
-                    <img class="userIcon" src="../views/img/user_icon.png" alt="error">
+                    <div style="text-align: center;">
+                        <img class="userIcon" src="../views/img/user_icon.png" alt="error">
+                    </div>
                     <p>Александр</p>
                     <h3>Уведомления</h3>
                 </div>
@@ -79,8 +81,8 @@
             <!-- Панель кнопок -->
             <div class="buttonPanel">
                 <img class="logoutImage" src="../views/img/logout_icon.png" alt="error">
+
                 <img class="addImage" src="../views/img/add_icon.png" alt="error">
-            </div>
         </section>
 
         <!-- Правая панель -->
