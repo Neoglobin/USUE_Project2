@@ -140,6 +140,21 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="changeBlock">
+                            <div class="changeBlockHeader">
+                                <p>A-12345</p>
+                                <p>N-34005900008411</p>
+                            </div>
+                            <p>Удаление записи</p>
+                            <div class="changeBlockFooter">
+                                <p>Изменения внесены</p>
+                                <div class="changeInfo">
+                                    <p>10.07.2024</p>
+                                    <p>16:35</p>
+                                    <p>Александр</p>
+                                </div>
+                            </div>
+                        </div>
 
                         <div>
                             <button class="changeConfirmBtn">
@@ -152,6 +167,7 @@
                 <!-- Правая часть (информационная облать) -->
                 <div class="mainAreaRight">
                     <h1>Список товаров</h1>
+                    <!-- Панель поиска и пагинации -->
                     <div class="navbar">
                         <div class="navpanel">
                             <div>
@@ -187,7 +203,81 @@
                                 </button>
                             </div>
                         </div>
+                        <p>7/14</p>
+                        <form class="searchPanel" action="">
+                            <div>
+                                <input class="searchbar" type="text" placeholder="Поиск">
+                            </div>
+                            <div>
+                                <button class="searchBtn">
+                                    <p>Найти</p>
+                                </button>
+                            </div>
+                        </form>
                     </div>
+
+                    <!-- Отображение элементов -->
+                    <div class="contentContainer">
+                        <div style="margin-top: 55px;" class="element">
+                            <img src="../views/img/green_indication.png" alt="error">
+                            <div class="content">
+                                <h3>A-12345 | N-34005900008411</h3>
+                                <h2>0% Фасовочная лента "Золотой цыплёнок"</h2>
+                                <h3>10.07.2024 10:30 | 15.07.2024 10:30</h3>
+                            </div>
+                        </div>
+                        <div class="element">
+                            <img src="../views/img/green_indication.png" alt="error">
+                            <div class="content">
+                                <h3>A-12345 | N-34005900008411</h3>
+                                <h2>0% Фасовочная лента "Золотой цыплёнок"</h2>
+                                <h3>10.07.2024 10:30 | 15.07.2024 10:30</h3>
+                            </div>
+                        </div>
+                        <div class="element">
+                            <img src="../views/img/green_indication.png" alt="error">
+                            <div class="content">
+                                <h3>A-12345 | N-34005900008411</h3>
+                                <h2>0% Фасовочная лента "Золотой цыплёнок"</h2>
+                                <h3>10.07.2024 10:30 | 15.07.2024 10:30</h3>
+                            </div>
+                        </div>
+                        <div class="element">
+                            <img src="../views/img/green_indication.png" alt="error">
+                            <div class="content">
+                                <h3>A-12345 | N-34005900008411</h3>
+                                <h2>0% Фасовочная лента "Золотой цыплёнок"</h2>
+                                <h3>10.07.2024 10:30 | 15.07.2024 10:30</h3>
+                            </div>
+                        </div>
+                        <div class="element">
+                            <img src="../views/img/green_indication.png" alt="error">
+                            <div class="content">
+                                <h3>A-12345 | N-34005900008411</h3>
+                                <h2>0% Фасовочная лента "Золотой цыплёнок"</h2>
+                                <h3>10.07.2024 10:30 | 15.07.2024 10:30</h3>
+                            </div>
+                        </div>
+                        <div class="element">
+                            <img src="../views/img/green_indication.png" alt="error">
+                            <div class="content">
+                                <h3>A-12345 | N-34005900008411</h3>
+                                <h2>0% Фасовочная лента "Золотой цыплёнок"</h2>
+                                <h3>10.07.2024 10:30 | 15.07.2024 10:30</h3>
+                            </div>
+                        </div>
+                        <div class="element">
+                            <img src="../views/img/green_indication.png" alt="error">
+                            <div class="content">
+                                <h3>A-12345 | N-34005900008411</h3>
+                                <h2>0% Фасовочная лента "Золотой цыплёнок"</h2>
+                                <h3>10.07.2024 10:30 | 15.07.2024 10:30</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Footer -->
+                    <p class="footerText">Product verification system</p>
                 </div>
             </div>
         </section>

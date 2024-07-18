@@ -9,13 +9,16 @@ body {
 }
 
 .loginHeader h1 {
+    font-family: "Anta", sans-serif;
     font-size: 150px;
+    font-weight: 700;
     color: #EE4A24;
     padding: 0px;
     margin: 0px;
 }
 
 .loginHeader h3 {
+    font-family: "Anta", sans-serif;
     color: #EFD6D0;
     font-size: 30px;
     margin: 0px;
@@ -46,10 +49,11 @@ body {
 }
 
 .loginInputsContainer label {
+    font-family: "Noto Sans", sans-serif;
     display: block;
     text-transform: uppercase;
     font-size: 20px;
-    font-weight: bold;
+    font-weight: 500;
     color: #EFD6D0;
 }
 
@@ -57,6 +61,7 @@ body {
     height: 35px;
     width: 100%;
     border-radius: 5px;
+    font-family: "Noto Sans", sans-serif;
     font-size: 20px;
     font-style: italic;
     padding: 5px;
@@ -70,8 +75,9 @@ body {
 }
 
 .loginButtonContainer button {
+    font-family: "Noto Sans", sans-serif;
     font-size: 20px;
-    font-weight: bold;
+    font-weight: 700;
     padding: 20px 80px;
     background: #68E3F5;
     border: none;
