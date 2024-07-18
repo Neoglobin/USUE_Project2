@@ -434,9 +434,8 @@ body {
 }
 
 .content {
-    width: 1080px;
     display: flex;
-    justify-content: space-between;
+    gap: 20px;
 }
 
 .content h2 {
