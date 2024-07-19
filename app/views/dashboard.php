@@ -224,6 +224,10 @@
                                 <h3>A-12345 | N-34005900008411</h3>
                                 <h2>0% Фасовочная лента "Золотой цыплёнок"</h2>
                                 <h3>10.07.2024 10:30 | 15.07.2024 10:30</h3>
+                                <div class="editPanel">
+                                    <img src="../views/img/pencil_icon.png" alt="error">
+                                    <img src="../views/img/bin_icon.png" alt="error">
+                                </div>
                             </div>
                         </div>
                         <div class="element">
@@ -232,6 +236,10 @@
                                 <h3>A-12345 | N-34005900008411</h3>
                                 <h2>0% Фасовочная лента "Золотой цыплёнок"</h2>
                                 <h3>10.07.2024 10:30 | 15.07.2024 10:30</h3>
+                                <div class="editPanel">
+                                    <img src="../views/img/pencil_icon.png" alt="error">
+                                    <img src="../views/img/bin_icon.png" alt="error">
+                                </div>
                             </div>
                         </div>
                         <div class="element">
@@ -240,6 +248,10 @@
                                 <h3>A-12345 | N-34005900008411</h3>
                                 <h2>0% Фасовочная лента "Золотой цыплёнок"</h2>
                                 <h3>10.07.2024 10:30 | 15.07.2024 10:30</h3>
+                                <div class="editPanel">
+                                    <img src="../views/img/pencil_icon.png" alt="error">
+                                    <img src="../views/img/bin_icon.png" alt="error">
+                                </div>
                             </div>
                         </div>
                         <div class="element">
@@ -248,6 +260,10 @@
                                 <h3>A-12345 | N-34005900008411</h3>
                                 <h2>0% Фасовочная лента "Золотой цыплёнок"</h2>
                                 <h3>10.07.2024 10:30 | 15.07.2024 10:30</h3>
+                                <div class="editPanel">
+                                    <img src="../views/img/pencil_icon.png" alt="error">
+                                    <img src="../views/img/bin_icon.png" alt="error">
+                                </div>
                             </div>
                         </div>
                         <div class="element">
@@ -256,6 +272,10 @@
                                 <h3>A-12345 | N-34005900008411</h3>
                                 <h2>0% Фасовочная лента "Золотой цыплёнок"</h2>
                                 <h3>10.07.2024 10:30 | 15.07.2024 10:30</h3>
+                                <div class="editPanel">
+                                    <img src="../views/img/pencil_icon.png" alt="error">
+                                    <img src="../views/img/bin_icon.png" alt="error">
+                                </div>
                             </div>
                         </div>
                         <div class="element">
@@ -264,6 +284,10 @@
                                 <h3>A-12345 | N-34005900008411</h3>
                                 <h2>0% Фасовочная лента "Золотой цыплёнок"</h2>
                                 <h3>10.07.2024 10:30 | 15.07.2024 10:30</h3>
+                                <div class="editPanel">
+                                    <img src="../views/img/pencil_icon.png" alt="error">
+                                    <img src="../views/img/bin_icon.png" alt="error">
+                                </div>
                             </div>
                         </div>
                         <div class="element">
@@ -272,6 +296,10 @@
                                 <h3>A-12345 | N-34005900008411</h3>
                                 <h2>0% Фасовочная лента "Золотой цыплёнок"</h2>
                                 <h3>10.07.2024 10:30 | 15.07.2024 10:30</h3>
+                                <div class="editPanel">
+                                    <img src="../views/img/pencil_icon.png" alt="error">
+                                    <img src="../views/img/bin_icon.png" alt="error">
+                                </div>
                             </div>
                         </div>
                     </div>
