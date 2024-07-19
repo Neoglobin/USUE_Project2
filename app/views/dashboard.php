@@ -219,56 +219,56 @@
                     <!-- Отображение элементов -->
                     <div class="contentContainer">
                         <div style="margin-top: 55px;" class="element">
-                            <img src="../views/img/green_indication.png" alt="error">
                             <div class="content">
+                                <img src="../views/img/green_indication.png" alt="error">
                                 <h3>A-12345 | N-34005900008411</h3>
                                 <h2>0% Фасовочная лента "Золотой цыплёнок"</h2>
                                 <h3>10.07.2024 10:30 | 15.07.2024 10:30</h3>
                             </div>
                         </div>
                         <div class="element">
-                            <img src="../views/img/green_indication.png" alt="error">
                             <div class="content">
+                                <img src="../views/img/green_indication.png" alt="error">
                                 <h3>A-12345 | N-34005900008411</h3>
                                 <h2>0% Фасовочная лента "Золотой цыплёнок"</h2>
                                 <h3>10.07.2024 10:30 | 15.07.2024 10:30</h3>
                             </div>
                         </div>
                         <div class="element">
-                            <img src="../views/img/green_indication.png" alt="error">
                             <div class="content">
+                                <img src="../views/img/green_indication.png" alt="error">
                                 <h3>A-12345 | N-34005900008411</h3>
                                 <h2>0% Фасовочная лента "Золотой цыплёнок"</h2>
                                 <h3>10.07.2024 10:30 | 15.07.2024 10:30</h3>
                             </div>
                         </div>
                         <div class="element">
-                            <img src="../views/img/green_indication.png" alt="error">
                             <div class="content">
+                                <img src="../views/img/green_indication.png" alt="error">
                                 <h3>A-12345 | N-34005900008411</h3>
                                 <h2>0% Фасовочная лента "Золотой цыплёнок"</h2>
                                 <h3>10.07.2024 10:30 | 15.07.2024 10:30</h3>
                             </div>
                         </div>
                         <div class="element">
-                            <img src="../views/img/green_indication.png" alt="error">
                             <div class="content">
+                                <img src="../views/img/green_indication.png" alt="error">
                                 <h3>A-12345 | N-34005900008411</h3>
                                 <h2>0% Фасовочная лента "Золотой цыплёнок"</h2>
                                 <h3>10.07.2024 10:30 | 15.07.2024 10:30</h3>
                             </div>
                         </div>
                         <div class="element">
-                            <img src="../views/img/green_indication.png" alt="error">
                             <div class="content">
+                                <img src="../views/img/green_indication.png" alt="error">
                                 <h3>A-12345 | N-34005900008411</h3>
                                 <h2>0% Фасовочная лента "Золотой цыплёнок"</h2>
                                 <h3>10.07.2024 10:30 | 15.07.2024 10:30</h3>
                             </div>
                         </div>
                         <div class="element">
-                            <img src="../views/img/green_indication.png" alt="error">
                             <div class="content">
+                                <img src="../views/img/green_indication.png" alt="error">
                                 <h3>A-12345 | N-34005900008411</h3>
                                 <h2>0% Фасовочная лента "Золотой цыплёнок"</h2>
                                 <h3>10.07.2024 10:30 | 15.07.2024 10:30</h3>

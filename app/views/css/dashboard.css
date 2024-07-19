@@ -418,8 +418,6 @@ body {
 }
 
 .element {
-    display: flex;
-    gap: 60px;
     padding: 14px;
     margin: 20px;
     border-radius: 10px;
@@ -435,7 +433,7 @@ body {
 
 .content {
     display: flex;
-    gap: 20px;
+    justify-content: space-between;
 }
 
 .content h2 {
