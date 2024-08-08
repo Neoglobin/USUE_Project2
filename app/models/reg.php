@@ -25,7 +25,9 @@ if (empty($credential)) {
     if ($stmt->execute()) {
         $userId = $pdo->lastInsertId();
 
-        $payload = [
+        $accessTokenPayload = [
+            'iss' => "http://localhost",
+            'iat' => time(),
             'exp' => time() + 1800,
             'data' => [
                 'id' => $userId,
@@ -33,15 +35,30 @@ if (empty($credential)) {
             ],
         ];
 
-        $jwt = JWT::encode($payload, $_ENV['JWT_SECRET_KEY'], 'HS256');
-        $_SESSION['auth_succsess'] = json_encode(['token' => $jwt]);
+        $refreshToken = bin2hex(random_bytes(64));
+        $refreshTokenExpiry = time() + (60 * 60 * 24 * 30);
+        $is_registration = 1;
+
+        $stmt = $pdo->prepare("INSERT INTO refresh_tokens (user_id, token, expires_at, is_registration) VALUES (:user_id, :token, FROM_UNIXTIME(:expires_at), :is_registration)");
+        $stmt->bindParam(':user_id', $userId);
+        $stmt->bindParam(':token', $refreshToken);
+        $stmt->bindParam(':expires_at', $refreshTokenExpiry);
+        $stmt->bindParam('is_registration', $is_registration);
+        $stmt->execute();
+
+        $jwt = JWT::encode($accessTokenPayload, $_ENV['JWT_SECRET_KEY'], 'HS256');
+
+        $_SESSION['auth_succsess'] = 'Регистрация завершена успешно. Пожалуйста авторизуйтесь.';
         $_SESSION['catch_succsess'] = false;
         header('Location: ../views/login.php');
+        die;
     } else {
-        $_SESSION['auth_failed'] = json_encode(['message' => 'Ошибка регистрации. Повторите попытку.']);
+        $_SESSION['auth_failed'] = 'Ошибка регистрации данных на сервере. Попробуйте ещё раз.';
         header('Location: ../views/register.php');
         die;
     }
 } else {
     $_SESSION['auth_failed'] = 'Учётная запись с таким именем уже существует. Попробуйте другое имя.';
+    header('Location: ../views/register.php');
+    die;
 }

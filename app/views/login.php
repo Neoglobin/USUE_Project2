@@ -41,11 +41,13 @@ if (isset($_COOKIE['register'])) {
                 $_SESSION['auth_succsess'] = false;
                 ?>
             </div>
-        <?php elseif (!empty($_SESSION['auth_failed'])) : ?>
+        <?php elseif (!empty($_SESSION['auth_failed']) or !empty($_SESSION['wrong_password'])) : ?>
             <div class="failedAlert">
                 <?php
                 echo '<p>' . $_SESSION['auth_failed'] . '</p>';
+                echo '<p>' . $_SESSION['wrong_password'] . '</p>';
                 $_SESSION['auth_failed'] = false;
+                $_SESSION['wrong_password'] = false;
                 ?>
             </div>
         <?php endif; ?>
