@@ -2,7 +2,6 @@
 session_start();
 
 $_SESSION['auth_succsess'] = false;
-$_SESSION['auth_failed'] = false;
 $_SESSION['auth_error'] = false;
 $_SESSION['wrong_password'] = false;
 $_SESSION['access_accepted'] = false;

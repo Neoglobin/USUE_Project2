@@ -1,5 +1,6 @@
 <?php
 session_start();
+setcookie('access_cookie', 'set', time() + 1800, '/');
 
 if (!empty($_SESSION['access_denied'])) {
     $_SESSION['auth_failed'] = 'Отказано в доступе';
@@ -7,9 +8,18 @@ if (!empty($_SESSION['access_denied'])) {
     die;
 }
 
-if (empty($_SESSION['access_accepted'])) {
-    echo $_POST['response'];
+if ($_COOKIE['access_cookie']) {
+    if (empty($_SESSION['access_accepted'])) {
+        echo $_POST['response'];
+    } else {
+        echo '<script>window.history.replaceState(null, null, window.location.href);</script>';
+    }
+} else {
+    $_SESSION['auth_failed'] = 'Время сессии истекло. Пожалуйста авторизуйтесь снова.';
+    header('Location: ../models/logout.php');
+    die;
 }
+
 ?>
 
 
@@ -19,7 +29,7 @@ if (empty($_SESSION['access_accepted'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PVS</title>
+    <title>PVS Dashboard</title>
     <link rel="stylesheet" href="css/dashboard.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">

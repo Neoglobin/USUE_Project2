@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-require 'C:/xampp/htdocs/db_router.php';
+require 'C:/xampp/htdocs/vendor/autoload.php';
 
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;

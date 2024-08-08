@@ -1,5 +1,6 @@
 <?php
 session_start();
+setcookie('access_cookie', 'set', time() + 1800, '/');
 require 'C:/xampp/htdocs/database/db_connect.php';
 
 $_SESSION['wrong_password'] = null;
@@ -41,7 +42,7 @@ if ($user && password_verify($password, $user['password'])) {
 
     $jwt = JWT::encode($accessTokenPayload, $_ENV['JWT_SECRET_KEY'], 'HS256');
 
-    $url = "http://localhost:8081/app/models/middleware.php";
+    $url = "http://localhost:/app/models/middleware.php";
 
     $options = [
         'http' => [
@@ -53,7 +54,7 @@ if ($user && password_verify($password, $user['password'])) {
     $response = file_get_contents($url, false, $context);
 
     if ($response === FALSE) {
-        $_SESSION['auth_failed'] = json_encode(['error' => 'Invalod token']);
+        $_SESSION['auth_failed'] = json_encode(['error' => 'Invalid token']);
         header('Location: ../views/login.php');
         die;
     } else {
