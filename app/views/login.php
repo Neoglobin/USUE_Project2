@@ -1,9 +1,37 @@
 <?php
-session_start();
-setcookie('login', 'connect', time() + 300, '/');
+require_once '../models/validator.php';
+require_once '../models/authentificator.php';
 
-if (isset($_COOKIE['register'])) {
-    setcookie('register', 'connect', time() - 300, '/');
+$_SESSION['access_denied'] = true;
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+    $prepared_data = new ValidationRules($_POST['login'], $_POST['password']);
+
+    $v = new Valitron\Validator($_POST);
+
+    $v->labels($prepared_data->labels);
+    $v->rules($prepared_data->rules);
+
+    if ($v->validate()) {
+        $validated_data = new Auth($_POST['login'], $_POST['password'], $pdo);
+        $token = $validated_data->auth_action();
+        if (isset($token)) {
+            $_SESSION['token'] = $token;
+            header('Location: dashboard.php');
+            die;
+        }
+        die;
+    } else {
+        $errors = '<ul>';
+        foreach ($v->errors() as $error) {
+            foreach ($error as $item) {
+                $errors .= "<li>{$item}</li>";
+            }
+        }
+        $errors .= '</ul>';
+        $_SESSION['auth_failed'] = $errors;
+    }
 }
 ?>
 
@@ -20,6 +48,9 @@ if (isset($_COOKIE['register'])) {
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Anta&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <script>
+        window.history.replaceState(null, null, window.location.href);
+    </script>
 </head>
 
 <body>
@@ -52,7 +83,7 @@ if (isset($_COOKIE['register'])) {
             </div>
         <?php endif; ?>
         <div class="loginBody">
-            <form action="../models/validator.php" method="POST">
+            <form action="" method="POST">
                 <div class="loginInputsContainer">
                     <label for="">Логин</label>
                     <input type="text" name="login" id="login">

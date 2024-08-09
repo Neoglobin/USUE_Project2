@@ -2,23 +2,22 @@
 session_start();
 setcookie('access_cookie', 'set', time() + 1800, '/');
 
+require '../models/router.php';
+
+if (!empty($_SESSION['token'])) {
+    $request = new Router\Routes($_SESSION['token']);
+    $request->verify_token();
+    if (!empty($_SESSION['access_accepted'])) {
+        $_SESSION['token'] = false;
+    }
+}
+
 if (!empty($_SESSION['access_denied'])) {
     $_SESSION['auth_failed'] = 'Отказано в доступе';
     header('Location: login.php');
     die;
 }
 
-if ($_COOKIE['access_cookie']) {
-    if (empty($_SESSION['access_accepted'])) {
-        echo $_POST['response'];
-    } else {
-        echo '<script>window.history.replaceState(null, null, window.location.href);</script>';
-    }
-} else {
-    $_SESSION['auth_failed'] = 'Время сессии истекло. Пожалуйста авторизуйтесь снова.';
-    header('Location: ../models/logout.php');
-    die;
-}
 
 ?>
 
