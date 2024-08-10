@@ -2,8 +2,6 @@
 require_once '../models/validator.php';
 require_once '../models/authentificator.php';
 
-$_SESSION['access_denied'] = true;
-
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $prepared_data = new ValidationRules($_POST['login'], $_POST['password'], $_POST['password_confirm']);
@@ -15,9 +13,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if ($v->validate()) {
         $validated_data = new Auth($_POST['login'], password_hash($_POST['password'], PASSWORD_BCRYPT), $pdo);
-        $validated_data->reg_action();
-        header('Location: login.php');
-        die;
+        $token = $validated_data->reg_action();
+        if (!empty($_SESSION['auth_succsess'])) {
+            $_SESSION['token'] = $token;
+            header('Location: dashboard.php');
+            die;
+        }
     } else {
         $errors = '<ul>';
         foreach ($v->errors() as $error) {

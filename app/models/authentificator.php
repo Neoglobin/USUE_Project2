@@ -28,7 +28,7 @@ class Auth
         if (empty($credential)) {
             $this->execute_data();
             $userId = $this->pdo->lastInsertId();
-            $this->generate_token($userId);
+            return $this->generate_token($userId);
         } else {
             return $_SESSION['auth_failed'] = 'Учётная запись с таким именем уже существует. Попробуйте другое имя.';
         }
@@ -41,7 +41,11 @@ class Auth
         $stmt->execute([':login' => $this->login]);
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if (($this->login == $user) and password_verify($this->password, $user['password'])) {
+        if (!$user) {
+            return $_SESSION['auth_failed'] = 'Пользователь не найден';
+        }
+
+        if (password_verify($this->password, $user['password'])) {
             $userId = $user['id'];
             return $this->generate_token($userId);
         } else {

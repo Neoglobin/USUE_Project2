@@ -2,10 +2,10 @@
 session_start();
 setcookie('access_cookie', 'set', time() + 1800, '/');
 
-require '../models/router.php';
+require '../models/checkpoint.php';
 
 if (!empty($_SESSION['token'])) {
-    $request = new Router\Routes($_SESSION['token']);
+    $request = new CheckPoint\CheckToken($_SESSION['token']);
     $request->verify_token();
     if (!empty($_SESSION['access_accepted'])) {
         $_SESSION['token'] = false;

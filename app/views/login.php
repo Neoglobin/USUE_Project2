@@ -1,8 +1,15 @@
 <?php
 require_once '../models/validator.php';
 require_once '../models/authentificator.php';
+require '../models/checkpoint.php';
 
-$_SESSION['access_denied'] = true;
+if (!empty($_SESSION['token'])) {
+    $request = new CheckPoint\CheckToken($_SESSION['token']);
+    $request->verify_token();
+    if (!empty($_SESSION['access_accepted'])) {
+        $_SESSION['token'] = false;
+    }
+}
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
@@ -16,12 +23,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($v->validate()) {
         $validated_data = new Auth($_POST['login'], $_POST['password'], $pdo);
         $token = $validated_data->auth_action();
-        if (isset($token)) {
+        if (!empty($_SESSION['auth_succsess'])) {
             $_SESSION['token'] = $token;
             header('Location: dashboard.php');
             die;
         }
-        die;
     } else {
         $errors = '<ul>';
         foreach ($v->errors() as $error) {
@@ -68,7 +74,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <?php if (!empty($_SESSION['auth_succsess'])) : ?>
             <div class="succsessAlert">
                 <?php
-                echo '<p>' . $_SESSION['auth_succsess'] . '</p>';
+                if (!empty($_SESSION['access_accepted'])) {
+                    if (!empty($_SERVER['HTTP_REFERER'])) {
+                        header('Location: ' . $_SERVER['HTTP_REFERER']);
+                        die;
+                    } else {
+                        header('Location: dashboard.php');
+                        die;
+                    }
+                }
                 $_SESSION['auth_succsess'] = false;
                 ?>
             </div>
