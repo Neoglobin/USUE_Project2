@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 
 <body>
-    <?php if (empty($_SESSION['catch_succsess'])) {
+    <?php if (empty($_SESSION['captcha_succsess'])) {
         header('Location: captcha.php');
     } ?>
     <div class="container">

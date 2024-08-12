@@ -23,7 +23,7 @@ if (file_exists($text_path)) {
 if (!empty($_SESSION['captcha_state'])) {
     if ($lines[0] == $lines[1]) {
         $_SESSION['captcha_state'] = null;
-        $_SESSION['cpatcha_succsess'] = true;
+        $_SESSION['captcha_succsess'] = true;
         header('Location: ../views/register.php');
     } else {
         $_SESSION['captcha_failed'] = 'Неверно, попробуйте ещё раз!';

@@ -36,7 +36,7 @@ if (empty($_SESSION['captcha_state'])) {
         <h3 style="padding-bottom: 0;" class="features-headline light">Введите данные с картинки</h3>
         <br>
         <img class="captcha-image" src="captcha/CAPTCHA.png" alt="error"><br><br>
-        <form action="/app/models/captcha_model.php" method="POST">
+        <form action="/app/models/Captcha.php" method="POST">
             <div>
                 <input class="captcha-input" name="captcha" type="text" />
                 <input class="captcha-btn" type="submit" value="Отправить">
