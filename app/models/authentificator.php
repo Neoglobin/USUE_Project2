@@ -1,6 +1,6 @@
 <?php
 
-require_once 'C:/xampp/htdocs/database/db_connect.php';
+require_once 'C:/xampp/htdocs/db_connect.php';
 
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
@@ -70,7 +70,7 @@ class Auth
             $accessTokenPayload = [
                 'iss' => "http://localhost",
                 'iat' => time(),
-                'exp' => time() + 1800,
+                'exp' => time() + 10,
                 'data' => [
                     'id' => $userId,
                     'login' => $this->login,
@@ -91,12 +91,44 @@ class Auth
             $stmt->execute();
 
             $_SESSION['auth_succsess'] = 'Регистрация завершена успешно. Пожалуйста авторизуйтесь.';
-            $_SESSION['catch_succsess'] = false;
-            $_SESSION['username'] = $this->login;
+            $_SESSION['captcha_succsess'] = false;
 
             return JWT::encode($accessTokenPayload, $_ENV['JWT_SECRET_KEY'], 'HS256');
         } catch (Exception $e) {
             return $_SESSION['auth_failed'] = 'Invalid Token';
         }
+    }
+}
+
+
+
+function verify_token($token)
+{
+    try {
+        $decoded = JWT::decode($token, new Key($_ENV['JWT_SECRET_KEY'], 'HS256'));
+
+        $currentTime = time();
+
+
+        if ($decoded->iss !== 'http://localhost') {
+            $_SESSION['auth_failed'] = json_encode(['Verification error' => 'Invalid issuer']);
+            header('Location: ../models/logout.php');
+            die;
+        }
+
+        if ($decoded->exp < $currentTime) {
+            $_SESSION['auth_failed'] = json_encode(['Verification error' => 'Token expired']);
+            header('Location: ../models/logout.php');
+            die;
+        } else {
+            $_SESSION['username'] = $decoded->data->login;
+            $_SESSION['access_accepted'] = true;
+            $_SESSION['access_denied'] = false;
+            setcookie('access_token', $token, time() + 20, '../', '', false, true);
+        }
+    } catch (Exception $e) {
+        $_SESSION['auth_failed'] = json_encode(['Verification error' => 'Invalid token']);
+        header('Location: ../models/logout.php');
+        die;
     }
 }

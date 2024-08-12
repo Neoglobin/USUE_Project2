@@ -1,7 +1,8 @@
 <?php
 session_start();
-$_SESSION['catch_succsess'] = null;
-$_SESSION['catch_failed'] = null;
+
+$_SESSION['captcha_succsess'] = null;
+$_SESSION['captcha_failed'] = null;
 
 $text_path = 'c:/xampp/htdocs/app/views/captcha/encode.txt';
 $user_captcha = $_POST['captcha'];
@@ -19,13 +20,13 @@ if (file_exists($text_path)) {
     die("Файл encode.txt не найден.");
 }
 
-if (!empty($_SESSION['catch'])) {
+if (!empty($_SESSION['captcha_state'])) {
     if ($lines[0] == $lines[1]) {
-        $_SESSION['catch'] = null;
-        $_SESSION['catch_succsess'] = true;
+        $_SESSION['captcha_state'] = null;
+        $_SESSION['cpatcha_succsess'] = true;
         header('Location: ../views/register.php');
     } else {
-        $_SESSION['catch_failed'] = 'Неверно, попробуйте ещё раз!';
+        $_SESSION['captcha_failed'] = 'Неверно, попробуйте ещё раз!';
         header('Location: ../views/captcha.php');
     }
 }

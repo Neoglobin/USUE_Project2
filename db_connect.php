@@ -1,5 +1,10 @@
 <?php
-require 'C:/xampp/htdocs/db_router.php';
+require 'vendor/autoload.php';
+
+use Dotenv\Dotenv;
+
+$dotenv = Dotenv::createImmutable(__DIR__);
+$dotenv->load();
 
 $host = $_ENV['DB_HOST'];
 $db = $_ENV['DB_DATABASE'];

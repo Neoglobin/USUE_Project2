@@ -1,15 +1,6 @@
 <?php
 require_once '../models/validator.php';
 require_once '../models/authentificator.php';
-require '../models/checkpoint.php';
-
-if (!empty($_SESSION['token'])) {
-    $request = new CheckPoint\CheckToken($_SESSION['token']);
-    $request->verify_token();
-    if (!empty($_SESSION['access_accepted'])) {
-        $_SESSION['token'] = false;
-    }
-}
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
@@ -24,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $validated_data = new Auth($_POST['login'], $_POST['password'], $pdo);
         $token = $validated_data->auth_action();
         if (!empty($_SESSION['auth_succsess'])) {
-            $_SESSION['token'] = $token;
+            verify_token($token);
             header('Location: dashboard.php');
             die;
         }
@@ -39,6 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['auth_failed'] = $errors;
     }
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -61,32 +53,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <body>
     <div class="container">
-        <?php
-        if (!empty($_SESSION['auth_error'])) {
-            echo "<script>alert('Ошибка передачи данных, попробуйте ещё раз')</script>";
-            $_SESSION['auth_error'] = false;
-        }
-        ?>
         <div class="loginHeader">
             <h1>PVS</h1>
             <h3>PRODUCT VERIFICATION SYSTEM</h3>
         </div>
-        <?php if (!empty($_SESSION['auth_succsess'])) : ?>
-            <div class="succsessAlert">
-                <?php
-                if (!empty($_SESSION['access_accepted'])) {
-                    if (!empty($_SERVER['HTTP_REFERER'])) {
-                        header('Location: ' . $_SERVER['HTTP_REFERER']);
-                        die;
-                    } else {
-                        header('Location: dashboard.php');
-                        die;
-                    }
-                }
-                $_SESSION['auth_succsess'] = false;
-                ?>
-            </div>
-        <?php elseif (!empty($_SESSION['auth_failed']) or !empty($_SESSION['wrong_password'])) : ?>
+        <?php if (!empty($_SESSION['auth_failed']) or !empty($_SESSION['wrong_password'])) : ?>
             <div class="failedAlert">
                 <?php
                 echo '<p>' . $_SESSION['auth_failed'] . '</p>';

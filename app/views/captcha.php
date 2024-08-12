@@ -1,12 +1,12 @@
 <?php
 session_start();
-$_SESSION['catch'] = null;
+$_SESSION['captcha_state'] = null;
 
 $command = escapeshellcmd("python c:/xampp/htdocs/app/views/captcha/generate.py");
 
-if (empty($_SESSION['catch'])) {
+if (empty($_SESSION['captcha_state'])) {
     exec($command);
-    $_SESSION['catch'] = true;
+    $_SESSION['captcha_state'] = true;
 }
 ?>
 
@@ -26,7 +26,7 @@ if (empty($_SESSION['catch'])) {
 </head>
 
 <body class="captcha-background">
-    <?php if (!empty($_SESSION['catch_succsess'])) {
+    <?php if (!empty($_SESSION['captcha_succsess'])) {
         header('Location: register.php');
     }
     ?>
@@ -45,9 +45,9 @@ if (empty($_SESSION['catch'])) {
         <br><br>
         <?php
 
-        if (!empty($_SESSION['catch_failed'])) {
-            echo $_SESSION['catch_failed'];
-            $_SESSION['catch_failed'] = false;
+        if (!empty($_SESSION['captcha_failed'])) {
+            echo $_SESSION['captcha_failed'];
+            $_SESSION['captcha_failed'] = false;
         }
         ?>
     </div>

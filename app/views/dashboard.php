@@ -1,26 +1,22 @@
 <?php
 session_start();
-setcookie('access_cookie', 'set', time() + 1800, '/');
 
-require '../models/checkpoint.php';
+require_once '../models/authentificator.php';
 
-if (!empty($_SESSION['token'])) {
-    $request = new CheckPoint\CheckToken($_SESSION['token']);
-    $request->verify_token();
-    if (!empty($_SESSION['access_accepted'])) {
-        $_SESSION['token'] = false;
-    }
+if (!empty($_COOKIE['access_token'])) {
+    verify_token($_COOKIE['access_token']);
+} else {
+    $_SESSION['access_denied'] = true;
 }
 
 if (!empty($_SESSION['access_denied'])) {
     $_SESSION['auth_failed'] = 'Отказано в доступе';
-    header('Location: login.php');
+    header('Location: ../models/logout.php');
     die;
 }
 
 
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
