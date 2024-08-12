@@ -1,6 +1,16 @@
 <?php
-require_once '../models/validator.php';
-require_once '../models/authentificator.php';
+require_once '../models/Validator.php';
+require_once '../models/Auth.php';
+
+if (!empty($_COOKIE['access_token'])) {
+    if (isset($_SERVER['HTTP_REFERER'])) {
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
+        die;
+    } else {
+        header('Location: dashboard.php');
+        die;
+    }
+}
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 

@@ -70,7 +70,7 @@ class Auth
             $accessTokenPayload = [
                 'iss' => "http://localhost",
                 'iat' => time(),
-                'exp' => time() + 10,
+                'exp' => time() + 900,
                 'data' => [
                     'id' => $userId,
                     'login' => $this->login,
@@ -81,6 +81,8 @@ class Auth
             $refreshTokenExpiry = time() + (60 * 60 * 24 * 30);
             if ($userId == $this->pdo->lastInsertId()) {
                 $is_registration = 1;
+            } else {
+                $is_registration = 0;
             }
 
             $stmt = $this->pdo->prepare("INSERT INTO refresh_tokens (user_id, token, expires_at, is_registration) VALUES (:user_id, :token, FROM_UNIXTIME(:expires_at), :is_registration)");
@@ -124,7 +126,7 @@ function verify_token($token)
             $_SESSION['username'] = $decoded->data->login;
             $_SESSION['access_accepted'] = true;
             $_SESSION['access_denied'] = false;
-            setcookie('access_token', $token, time() + 20, '../', '', false, true);
+            setcookie('access_token', $token, time() + (60 * 60 * 24), '/', '', false, true);
         }
     } catch (Exception $e) {
         $_SESSION['auth_failed'] = json_encode(['Verification error' => 'Invalid token']);

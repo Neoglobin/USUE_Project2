@@ -1,6 +1,8 @@
 <?php
 session_start();
 
+setcookie('access_token', $token, time() - (60 * 60 * 24), '/', '', false, true);
+
 $_SESSION['auth_succsess'] = false;
 $_SESSION['auth_error'] = false;
 $_SESSION['wrong_password'] = false;

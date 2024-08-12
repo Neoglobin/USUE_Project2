@@ -1,6 +1,6 @@
 <?php
-require_once '../models/validator.php';
-require_once '../models/authentificator.php';
+require_once '../models/Validator.php';
+require_once '../models/Auth.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 

@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-require_once '../models/authentificator.php';
+require_once '../models/Auth.php';
 
 if (!empty($_COOKIE['access_token'])) {
     verify_token($_COOKIE['access_token']);
