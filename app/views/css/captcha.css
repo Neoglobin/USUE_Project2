@@ -1,0 +1,45 @@
+.captcha {
+    padding-top: 100px;
+    padding-bottom: 80px;
+    text-align: center;
+    padding-bottom: 90px;
+    position: relative;
+  }
+  
+  .captcha-background {
+    background: -webkit-linear-gradient(117deg, rgb(96, 87, 246), rgb(216, 71, 99));
+    background: linear-gradient(117deg, rgb(96, 87, 246), rgb(216, 71, 99));
+    background: -webkit-radial-gradient(rgb(194, 74, 126), rgb(105, 86, 235));
+    background: radial-gradient(rgb(194, 74, 126), rgb(105, 86, 235));
+  }
+  
+  .captcha-input {
+    background-color: white;
+    border-radius: 10px;
+    border: 1px solid #fff;
+    width: 150px;
+    height: 45px;
+    color: #808080;
+    border: none;
+    box-shadow: 0px 2px 14px rgba(0, 0, 0, 0.2);
+  }
+  
+  .captcha-image {
+    border-radius: 20px;
+    box-shadow: 0px 1px 14px rgba(0, 0, 0, 0.5);
+  }
+
+  .popup_img_logo {
+    width: 300px;
+  }
+  
+  .captcha-btn {
+    background-color: #0abceb;
+    border-radius: 10px;
+    border: #0abceb;
+    width: 150px;
+    height: 45px;
+    color: white;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  }
+  

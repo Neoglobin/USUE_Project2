@@ -1,0 +1,524 @@
+
+body {
+    padding: 0px;
+    margin: 0px;
+    height: 100%;
+}
+
+.container {
+    position: absolute;
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+
+/* Левая часть страницы ------------------------------------------------------- */
+
+.leftPanel {
+    width: 400px;
+    background-color: #2E2939;
+    background-size:contain;
+}
+
+/* Информация профиля ---------------------------------------------------------- */
+
+.profile {
+    margin: 0px;
+    margin-bottom: 25px;
+    padding: 16px;
+}
+
+.clock {
+    font-family: "Noto Sans", sans-serif;
+    color: #E8ECF2;
+    font-size: 20px;
+    margin: 0;
+    float: left;
+}
+
+.panelIcon {
+    width: 30px;
+    height: 30px;
+    margin: 0;
+    float: right;
+}
+
+.userIcon {
+   width: 120px;
+   height: 120px;
+}
+
+.profileContent {
+    margin-top: 25px;
+    align-items: center;
+}
+
+.profileContent p {
+    font-family: "Noto Sans", sans-serif;
+    color: #E8ECF2;
+    font-size: 20px;
+    font-weight: 400;
+    text-align: center;
+    margin: 30px;
+}
+
+.profileContent h3 {
+    font-family: "Noto Sans", sans-serif;
+    color: #E8ECF2;
+    font-size: 24px;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 0;
+}
+
+  /* Область уведомлений ------------------------------------------------------ */
+
+.notifyArea {
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+.notifyBlock {
+    margin-bottom: 25px;
+    background-color: #34C759;
+    opacity: 90%;
+    border-radius: 15px;
+}
+
+.notifyUpperString {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 10px;
+}
+
+.notifyLowerString {
+    display: flex;
+    gap: 50px;
+    justify-content: left;
+    padding-left: 10px;
+}
+
+.notifyArea h3 {
+    margin: 0;
+    font-family: "Noto Serif", sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    color: #E8ECF2;
+}
+
+.notifyArea p {
+    margin: 0;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-family: "Noto Serif", sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    color: #E8ECF2;
+}
+
+.notifyArea img {
+    width: 20px;
+    height: 20px;
+    padding: 8px;
+
+}
+
+/* Панель добавления элемента и выхода из системы ----------------------------------------------- */
+
+.buttonPanel {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 25px;
+    padding: 16px;
+}
+
+.logoutImage {
+    width: 45px;
+    height: 45px;
+}
+
+.addImage {
+    width: 45px;
+    height: 45px;
+}
+
+/* Правая часть страницы ----------------------------------------------------------------------- */
+
+.rightPanel {
+    margin: 0;
+    width: 100%;
+}
+
+.header {
+    height: 90px;
+    background-color: #FF5E00;
+    opacity: 80%;
+    text-align: center;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.header a {
+    margin: 0;
+    margin-left: 310px;
+    font-family: "Anta", sans-serif;
+    font-size: 72px;
+    font-weight: 600;
+    text-decoration: none;
+    color: black;
+}
+
+/* Основное представление ----------------------------------------------------------------------- */
+
+.mainArea {
+    display: flex;
+}
+
+/* Левая часть основного представления (информация об отредактированных элементах) --------------- */
+
+.mainAreaLeft {
+
+}
+
+.catalogBtn {
+   background-color: #FF5E00;
+   opacity: 80%;
+   border: none;
+   border-radius: 8px;
+   width: 280px;
+   height: 45px;
+   margin-top: 20px;
+   margin-bottom: 20px;
+   margin-left: 20px;
+   padding: 5px;
+   box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.catalogBtn p {
+    margin: 0;
+    text-decoration: none;
+    font-family: "Noto Serif", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: #E8ECF2;
+}
+
+.changeList {
+    width: 280px;
+    height: 650px;
+    background-color: #E8ECF2;
+    border-radius: 20px;
+    margin-left: 20px;
+    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.2);
+}
+
+.changeList h3 {
+    padding: 10px;
+    text-align: center;
+    font-family: "Noto Serif", sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.listing {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.listing img {
+    width: 18px;
+    height: 18px;
+}
+
+.listing p {
+    margin: 0;
+    text-align: center;
+    font-family: "Noto Serif", sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.changeBlock {
+    width: 244px;
+    height: 144px;
+    background-color: #CAD0D9;
+    border-radius: 20px;
+    margin: 16px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+
+}
+
+.changeBlock p {
+    font-family: "Noto Serif", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+}
+
+.changeBlockHeader {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 0;
+}
+
+.changeBlockHeader p {
+    margin-bottom: 0;
+    text-align: center;
+    font-family: "Noto Serif", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: #E59226;
+}
+
+.changeBlockFooter p {
+    margin: 0;
+    text-align: center;
+    font-family: "Noto Serif", sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: #FC2323;
+}
+
+.changeInfo {
+    margin: 0;
+    display: flex;
+    gap: 20px;
+    padding-left: 20px;
+}
+
+.changeConfirmBtn {
+    width: 244px;
+    height: 45px;
+    border: none;
+    background-color: #34C759;
+    border-radius: 15px;
+    margin: 16px;
+    margin-top: 8px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.changeConfirmBtn p {
+    margin: 0;
+    text-decoration: none;
+    font-family: "Noto Serif", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: #E8ECF2;
+}
+
+/* Правая часть основного представления ----------------------------------------- */
+
+.mainAreaRight {
+    width: 100%;
+}
+
+.mainAreaRight h1 {
+    margin: 0;
+    margin-top: 12px;
+    text-align: center;
+    font-family: "Saira Semi Condensed", sans-serif;
+    font-size: 36px;
+    font-weight: 600;
+}
+
+/* Верхняя панель поиска и пагинации -------------------------------------------- */
+
+.navbar {
+    display: flex;
+    margin: 20px;
+    justify-content: space-between;
+}
+
+.navbar p {
+    font-family: "Noto Serif", sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: #9E9E9E; 
+}
+
+.navpanel {
+    display: flex;
+    gap: 10px;
+}
+
+.navpanel option {
+    text-align: center;
+}
+
+.navpanel p {
+    margin: 0;
+    font-family: "Noto Serif", sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: #E8ECF2;
+}
+
+.navPagging {
+    width: 40px;
+    height: 40px;
+    border: none;
+    background-color: #FA7A30;
+    border-radius: 10px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+
+.navOptions {
+    width: 140px;
+    height: 40px;
+    border: none;
+    background-color: #D0D5DE;
+    border-radius: 10px;
+    font-family: "Noto Serif", sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.searchPanel {
+    display: flex;
+    gap: 10px;
+}
+
+.searchbar {
+    width: 250px;
+    height: 40px;
+    border: none;
+    background-color: #E8ECF2;
+    border-radius: 10px;
+    font-family: "Noto Serif", sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    text-align: center;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.searchBtn {
+    width: 125px;
+    height: 40px;
+    border: none;
+    border-radius: 10px;
+    background-color: #BC46E8;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.searchBtn p {
+    font-family: "Noto Serif", sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: #E8ECF2;
+}
+
+/* Основной контент ---------------------------------------------------------------------------- */
+
+.contentContainer {
+    margin-top: 50px;
+}
+
+.element {
+    padding: 14px;
+    margin: 20px;
+    border-radius: 10px;
+    background-color: #E8ECF2;
+    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.2);
+}
+
+.element img {
+    margin: 0;
+    width: 20px;
+    height: 20px;
+}
+
+.content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.content h2 {
+    margin: 0;
+    font-family: "Noto Serif", sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: #34C759;
+}
+
+.content h3 {
+    margin: 0;
+    font-family: "Noto Serif", sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: #34C759;
+}
+
+.editPanel img {
+    padding-right: 10px;
+}
+
+/* Footer ------------------------------------------------------------------- */
+
+.footerText {
+    text-align: center;
+    margin: 55px;
+    font-family: "Noto Serif", sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: #9E9E9E;
+}
+
+/* MEDIA адаптация --------------------------------------------------------------------- */
+
+@media (max-height: 1024px) {
+    .leftPanel {
+        height: 110%;
+    }
+    .rightPanel {
+        height: 110%;
+    }
+
+}
+
+@media (max-height: 800px) {
+    .leftPanel {
+        height: 120%;
+    }
+    .rightPanel {
+        height: 120%;
+    }
+}
+
+@media (max-height: 640px) {
+    .leftPanel {
+        height: 130%;
+    }
+    .rightPanel {
+        height: 130%;
+    }
+}
+
+
+@media (max-width: 1024px) {
+    .container {
+        width: 110%;
+    }
+
+}
+
+@media (max-width: 800px) {
+    .container {
+        width: 120%;
+    }
+}
+
+@media (max-width: 640px) {
+    .container {
+        width: 130%;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        width: 170%;
+    }
+}
