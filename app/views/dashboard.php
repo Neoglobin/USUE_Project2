@@ -2,6 +2,7 @@
 session_start();
 
 require_once '../models/Auth.php';
+require_once '../models/Queries.php';
 
 if (!empty($_COOKIE['access_token'])) {
     verify_token($_COOKIE['access_token']);
@@ -53,7 +54,7 @@ if (!empty($_SESSION['access_denied'])) {
                     </div>
                 </div>
                 <!-- Область уведомлений -->
-                <div class="notifyArea">
+                <!-- <div class="notifyArea"> 
                     <div class="notifyBlock">
                         <div class="notifyUpperString">
                             <h3>11:26</h3>
@@ -98,7 +99,7 @@ if (!empty($_SESSION['access_denied'])) {
                             <p>N-34005900008411</p>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <!-- Панель кнопок -->
                 <div class="buttonPanel">
                     <a href="../models/logout.php"><img class="logoutImage" src="../views/img/logout_icon.png" alt="error"></a>
@@ -191,6 +192,15 @@ if (!empty($_SESSION['access_denied'])) {
                         <!-- Панель поиска и пагинации -->
                         <div class="navbar">
                             <div class="navpanel">
+                                <?php
+                                $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+                                $limit = 7;
+                                $offset = ($page - 1) * $limit;
+
+                                $data_count = content_count();
+                                $total_count = $data_count['count'];
+                                $total_pages = ceil($total_count / $limit);
+                                ?>
                                 <div>
                                     <select class="navOptions" name="stage" id="stage">
                                         <option value="active">
@@ -198,33 +208,14 @@ if (!empty($_SESSION['access_denied'])) {
                                         </option>
                                     </select>
                                 </div>
-                                <div>
-                                    <button class="navPagging" style="background-color: #BC46E8;">
-                                        <p>1</p>
-                                    </button>
-                                </div>
-                                <div>
-                                    <button class="navPagging">
-                                        <p>2</p>
-                                    </button>
-                                </div>
-                                <div>
-                                    <button class="navPagging">
-                                        <p>3</p>
-                                    </button>
-                                </div>
-                                <div>
-                                    <button class="navPagging">
-                                        <p>4</p>
-                                    </button>
-                                </div>
-                                <div>
-                                    <button class="navPagging">
-                                        <p>5</p>
-                                    </button>
-                                </div>
+                                <?php for ($i = 1; $i <= $total_pages; $i++) : ?>
+                                    <a href="?page=<?php echo $i; ?>">
+                                        <button class="navPagging" style="<?php if ($i == $page) echo 'background-color: #BC46E8'; ?>">
+                                            <p><?php echo $i; ?></p>
+                                        </button>
+                                    </a>
+                                <?php endfor; ?>
                             </div>
-                            <p>7/14</p>
                             <form class="searchPanel" action="">
                                 <div>
                                     <input class="searchbar" type="text" placeholder="Поиск">
@@ -239,96 +230,48 @@ if (!empty($_SESSION['access_denied'])) {
 
                         <!-- Отображение элементов -->
                         <div class="contentContainer">
-                            <div style="margin-top: 55px;" class="element">
-                                <div class="content">
-                                    <img src="../views/img/green_indication.png" alt="error">
-                                    <h3>A-12345 | N-34005900008411</h3>
-                                    <h2>0% Фасовочная лента "Золотой цыплёнок"</h2>
-                                    <h3>10.07.2024 10:30 | 15.07.2024 10:30</h3>
-                                    <div class="editPanel">
-                                        <img src="../views/img/pencil_icon.png" alt="error">
-                                        <img src="../views/img/bin_icon.png" alt="error">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="element">
-                                <div class="content">
-                                    <img src="../views/img/green_indication.png" alt="error">
-                                    <h3>A-12345 | N-34005900008411</h3>
-                                    <h2>0% Фасовочная лента "Золотой цыплёнок"</h2>
-                                    <h3>10.07.2024 10:30 | 15.07.2024 10:30</h3>
-                                    <div class="editPanel">
-                                        <img src="../views/img/pencil_icon.png" alt="error">
-                                        <img src="../views/img/bin_icon.png" alt="error">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="element">
-                                <div class="content">
-                                    <img src="../views/img/green_indication.png" alt="error">
-                                    <h3>A-12345 | N-34005900008411</h3>
-                                    <h2>0% Фасовочная лента "Золотой цыплёнок"</h2>
-                                    <h3>10.07.2024 10:30 | 15.07.2024 10:30</h3>
-                                    <div class="editPanel">
-                                        <img src="../views/img/pencil_icon.png" alt="error">
-                                        <img src="../views/img/bin_icon.png" alt="error">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="element">
-                                <div class="content">
-                                    <img src="../views/img/green_indication.png" alt="error">
-                                    <h3>A-12345 | N-34005900008411</h3>
-                                    <h2>0% Фасовочная лента "Золотой цыплёнок"</h2>
-                                    <h3>10.07.2024 10:30 | 15.07.2024 10:30</h3>
-                                    <div class="editPanel">
-                                        <img src="../views/img/pencil_icon.png" alt="error">
-                                        <img src="../views/img/bin_icon.png" alt="error">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="element">
-                                <div class="content">
-                                    <img src="../views/img/green_indication.png" alt="error">
-                                    <h3>A-12345 | N-34005900008411</h3>
-                                    <h2>0% Фасовочная лента "Золотой цыплёнок"</h2>
-                                    <h3>10.07.2024 10:30 | 15.07.2024 10:30</h3>
-                                    <div class="editPanel">
-                                        <img src="../views/img/pencil_icon.png" alt="error">
-                                        <img src="../views/img/bin_icon.png" alt="error">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="element">
-                                <div class="content">
-                                    <img src="../views/img/green_indication.png" alt="error">
-                                    <h3>A-12345 | N-34005900008411</h3>
-                                    <h2>0% Фасовочная лента "Золотой цыплёнок"</h2>
-                                    <h3>10.07.2024 10:30 | 15.07.2024 10:30</h3>
-                                    <div class="editPanel">
-                                        <img src="../views/img/pencil_icon.png" alt="error">
-                                        <img src="../views/img/bin_icon.png" alt="error">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="element">
-                                <div class="content">
-                                    <img src="../views/img/green_indication.png" alt="error">
-                                    <h3>A-12345 | N-34005900008411</h3>
-                                    <h2>0% Фасовочная лента "Золотой цыплёнок"</h2>
-                                    <h3>10.07.2024 10:30 | 15.07.2024 10:30</h3>
-                                    <div class="editPanel">
-                                        <img src="../views/img/pencil_icon.png" alt="error">
-                                        <img src="../views/img/bin_icon.png" alt="error">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                            <?php
+                            $query = content_query();
 
-                        <!-- Footer -->
-                        <p class="footerText">Product verification system</p>
+                            $result = '';
+
+                            foreach ($query as $elem) {
+
+                                $created_at = date("d-m-Y H:i:s", strtotime($elem['created_at']));
+                                $expires_at = date("d-m-Y H:i:s", strtotime($elem['expires_at']));
+
+                                if ($elem['status'] == 0) {
+                                    $result .= '<div class="element"><div class="content"><img src="../views/img/green_indication.png" alt="error"><h3>' . htmlspecialchars($elem['article']) . ' |
+                                             ' . htmlspecialchars($elem['barcode']) . '</h3><h2>' . htmlspecialchars($elem['percentage']) . '% ' . '</h2>
+                                             <h2>' . htmlspecialchars($elem['name']) . '</h2>
+                                             <h3>' . htmlspecialchars($created_at) . ' | ' . htmlspecialchars($expires_at) . '</h3></div></div>';
+                                }
+                            }
+                            echo $result;
+                            ?>
+
+                            <!-- <div class="element"> 
+                                <div class="content">
+                                    <img src="../views/img/green_indication.png" alt="error">
+                                    <h3>A-12345 | N-34005900008411</h3>
+                                    <h2>0% Фасовочная лента "Золотой цыплёнок"</h2>
+                                    <h3>10.07.2024 10:30 | 15.07.2024 10:30</h3>
+                                    <div class="editPanel">
+                                        <img src="../views/img/pencil_icon.png" alt="error">
+                                        <img src="../views/img/bin_icon.png" alt="error">
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+
+                            <!-- Footer -->
+                            <p class="footerText"><?php if ($total_count > 0) {
+                                                        echo $total_count;
+                                                    } else {
+                                                        echo 'Нет записей';
+                                                    } ?></p>
+                        </div>
                     </div>
-                </div>
             </section>
 
         </div>

@@ -120,7 +120,10 @@ function verify_token($token)
         $decoded = JWT::decode($token, new Key($_ENV['JWT_SECRET_KEY'], 'HS256'));
 
         if ($decoded) {
-            $_SESSION['username'] = $decoded->data->login;
+            if (empty($_SESSION['username'])) {
+                $_SESSION['username'] = $decoded->data->login;
+            }
+
             $_SESSION['access_accepted'] = true;
             $_SESSION['access_denied'] = false;
 
