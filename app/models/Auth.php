@@ -2,6 +2,8 @@
 
 require_once 'C:/xampp/htdocs/db_connect.php';
 
+use Firebase\JWT\ExpiredException;
+use Firebase\JWT\JWK;
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
 
@@ -66,7 +68,8 @@ class Auth
     private function generate_token($userId)
     {
         try {
-            //Токен доступа
+
+            //Генерация токена доступа
             $accessTokenPayload = [
                 'iss' => "http://localhost",
                 'iat' => time(),
@@ -76,23 +79,8 @@ class Auth
                     'login' => $this->login,
                 ],
             ];
-            //Токен обновления
-            $refreshToken = bin2hex(random_bytes(64));
-            $refreshTokenExpiry = time() + (60 * 60 * 24 * 30);
-            if ($userId == $this->pdo->lastInsertId()) {
-                $is_registration = 1;
-            } else {
-                $is_registration = 0;
-            }
 
-            $stmt = $this->pdo->prepare("INSERT INTO refresh_tokens (user_id, token, expires_at, is_registration) VALUES (:user_id, :token, FROM_UNIXTIME(:expires_at), :is_registration)");
-            $stmt->bindParam(':user_id', $userId);
-            $stmt->bindParam(':token', $refreshToken);
-            $stmt->bindParam(':expires_at', $refreshTokenExpiry);
-            $stmt->bindParam('is_registration', $is_registration);
-            $stmt->execute();
-
-            $_SESSION['auth_succsess'] = 'Регистрация завершена успешно. Пожалуйста авторизуйтесь.';
+            $_SESSION['auth_succsess'] = true;
             $_SESSION['captcha_succsess'] = false;
 
             return JWT::encode($accessTokenPayload, $_ENV['JWT_SECRET_KEY'], 'HS256');
@@ -109,27 +97,29 @@ function verify_token($token)
     try {
         $decoded = JWT::decode($token, new Key($_ENV['JWT_SECRET_KEY'], 'HS256'));
 
-        $currentTime = time();
+        if ($decoded) {
+            if (empty($_SESSION['username'])) {
+                $_SESSION['username'] = $decoded->data->login;
+            }
 
-
-        if ($decoded->iss !== 'http://localhost') {
-            $_SESSION['auth_failed'] = json_encode(['Verification error' => 'Invalid issuer']);
-            header('Location: ../models/logout.php');
-            die;
-        }
-
-        if ($decoded->exp < $currentTime) {
-            $_SESSION['auth_failed'] = json_encode(['Verification error' => 'Token expired']);
-            header('Location: ../models/logout.php');
-            die;
-        } else {
-            $_SESSION['username'] = $decoded->data->login;
             $_SESSION['access_accepted'] = true;
             $_SESSION['access_denied'] = false;
+
+            setcookie('user_id', $decoded->data->id, time() + (60 * 60 * 24 * 30), '/', '', false, true);
             setcookie('access_token', $token, time() + (60 * 60 * 24), '/', '', false, true);
         }
+
+        if ($decoded->iss !== 'http://localhost') {
+            $_SESSION['auth_failed'] = 'Verification error: Invalid issuer';
+            header('Location: ../models/logout.php');
+            die;
+        }
+    } catch (ExpiredException $e) {
+        $_SESSION['auth_failed'] = 'Verification error: Token expired';
+        header('Location: ../models/logout.php');
+        die;
     } catch (Exception $e) {
-        $_SESSION['auth_failed'] = json_encode(['Verification error' => 'Invalid token']);
+        $_SESSION['auth_failed'] = 'Verification error: Invalid token';
         header('Location: ../models/logout.php');
         die;
     }
